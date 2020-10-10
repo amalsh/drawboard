@@ -1,5 +1,12 @@
+/*
+ If board id with the url it will create the board as the board id
+ ex; http://localhost:3000/123 - 123- will be board id
+*/
 let boardId = location.pathname.replace(/[^\w ]/, "").trim();
 
+/*
+ If no board id popupbox will appear to enter default will be 123
+*/
 if (!boardId) {
   boardId = prompt("Your board name", "123");
   location.assign(boardId);
@@ -15,7 +22,7 @@ let isRectActive = false,
   isLoadedFromJson = false,
   activeColor = "#000000";
 
-//set w & h for canvas
+//set width & height for canvas
 canvas.setHeight(1000);
 canvas.setWidth(1000);
 
@@ -148,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCanvas(canvas).renderAll();
 
   //canvas events
+  //drawings will be store and retrieve through json object
   canvas.on("after:render", function() {
     if (!isLoadedFromJson) {
       emitEvent();
@@ -163,6 +171,8 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.loadFromJSON(obj);
   });
 
+  //this will subscribe to other users join in same drawing board
+  //what ever the drawing the drawing will be others board
   socket.on(`drawing${boardId}`, function(obj) {
     if (!obj) return;
 

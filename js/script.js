@@ -12,7 +12,7 @@ if (!boardId) {
   location.assign(boardId);
 }
 
-let socket = io("http://localhost:3000/", { query: `boardId=${boardId}` });
+let socket = io("/", { query: `boardId=${boardId}` });
 
 const canvas = new fabric.Canvas("canvasStageRoot");
 

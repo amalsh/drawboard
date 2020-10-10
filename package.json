@@ -10,7 +10,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "fabric": "^4.2.0",
-    "nodemon": "^2.0.4",
     "socket.io": "^2.3.0"
   }
 }

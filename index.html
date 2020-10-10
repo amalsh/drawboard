@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- <link rel="stylesheet" href="css/spacing.css" /> -->
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+      }
+      body {
+        margin: 0;
+        font-size: 16px;
+      }
+      .stage {
+        background: floralwhite;
+      }
+
+      .canvasWrapperOuter {
+        overflow: scroll;
+        padding: 100px 0;
+      }
+      #canvasWrapper {
+        width: 1000px;
+        height: 1000px;
+        box-shadow: 0px 0 16px -12px;
+        margin: auto;
+        background: #fff;
+      }
+
+      .toolboxWrapper {
+        position: fixed;
+        top: 0;
+        width: calc(100% - 20px);
+        padding: 10px;
+        z-index: 99999;
+        background-color: lightgrey;
+        overflow: auto;
+        white-space: nowrap;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .toolGroup {
+        margin: 0 1rem;
+      }
+
+      .toolboxWrapper button {
+        min-width: 60px;
+        height: 32px;
+        line-height: 0;
+        padding: 16px;
+        margin: 0 6px;
+        border: 0;
+      }
+
+      a {
+        text-decoration: none;
+        line-height: 2rem;
+      }
+    </style>
+    <div class="stage">
+      <div class="canvasWrapperOuter">
+        <div id="canvasWrapper">
+          <canvas
+            id="canvasStageRoot"
+            style="position: relative; z-index: 9999; top: 0; bottom: 0;"
+          ></canvas>
+        </div>
+      </div>
+      <div class="toolboxWrapper">
+        <div class="toolGroup">
+          <button id="pencilMode" onclick="toolPencil()">
+            Pencil
+          </button>
+          <button onclick="toolRect()">
+            Rectangle
+          </button>
+          <button onclick="toolCircle()">
+            Circle
+          </button>
+          <button onclick="toolText()">
+            Text
+          </button>
+        </div>
+
+        <div class="toolGroup color__buttons">
+          <button
+            class="border-none active"
+            style="box-shadow: inset 0 -6px 0 #000000;"
+            onclick="changeColor('#000000')"
+          >
+            black
+          </button>
+          <button
+            class="border-none"
+            onclick="changeColor('#D01919')"
+            style="box-shadow: inset 0 -6px 0 #D01919;"
+          >
+            red
+          </button>
+          <button
+            class="border-none"
+            onclick="changeColor('#EAAE00')"
+            style="box-shadow: inset 0 -6px 0 #EAAE00;"
+          >
+            yellow
+          </button>
+          <button
+            class="border-none"
+            onclick="changeColor('#16AB39')"
+            style="box-shadow: inset 0 -6px 0 #16AB39;"
+          >
+            green
+          </button>
+          <button
+            class="border-none"
+            onclick="changeColor('#1678C2')"
+            style="box-shadow: inset 0 -6px 0 #1678C2;"
+          >
+            blue
+          </button>
+        </div>
+
+        <div class="toolGroup">
+          <button id="drwClearCanvas" onclick="toolClearAll()">
+            Clear
+          </button>
+        </div>
+
+        <div class="toolGroup">
+          <a href="/">
+            Create new stage
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script src="js/jquery-3.3.1.min.js"></script> -->
+    <script src="js/fabric.min.js"></script>
+    <script src="js/shapes.fabric.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
